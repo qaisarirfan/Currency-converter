@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReverseButton /> Does not explode 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginVertical": 20,
+      "opacity": 1,
+    }
+  }
+  testID="reverse_button"
+>
+  <Image
+    resizeMode="contain"
+    source={
+      Object {
+        "process": [Function],
+      }
+    }
+    style={
+      Object {
+        "height": 20,
+        "marginRight": 10,
+        "width": 20,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "color": "#fff",
+        "fontSize": 16,
+      }
+    }
+  >
+    test
+  </Text>
+</View>
+`;

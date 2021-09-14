@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`conversion reducer should handle GET_REQUEST_FAIL 1`] = `
+Object {
+  "baseCurrency": "USD",
+  "favorite": Array [],
+  "quoteCurrency": "GBP",
+  "rates": Object {
+    "data": Array [],
+    "loader": false,
+    "loadingError": undefined,
+  },
+}
+`;
+
+exports[`conversion reducer should handle GET_REQUEST_START 1`] = `
+Object {
+  "baseCurrency": "USD",
+  "favorite": Array [],
+  "quoteCurrency": "GBP",
+  "rates": Object {
+    "data": Array [],
+    "loader": true,
+    "loadingError": null,
+  },
+}
+`;
+
+exports[`conversion reducer should handle GET_REQUEST_SUCCESS 1`] = `
+Object {
+  "baseCurrency": "USD",
+  "favorite": Array [],
+  "quoteCurrency": "GBP",
+  "rates": Object {
+    "data": Array [],
+    "loader": false,
+    "loadingError": null,
+  },
+}
+`;
+
+exports[`conversion reducer should return the initial state 1`] = `
+Object {
+  "baseCurrency": "USD",
+  "favorite": Array [],
+  "quoteCurrency": "GBP",
+  "rates": Object {
+    "data": Array [],
+    "loader": false,
+    "loadingError": null,
+  },
+}
+`;

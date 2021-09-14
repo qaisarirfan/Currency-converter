@@ -1,0 +1,6 @@
+# Third party
+**/node_modules
+**/jest/
+
+# No way to properly configure eslint for testing files so for now they are ignored
+**/__tests__/
