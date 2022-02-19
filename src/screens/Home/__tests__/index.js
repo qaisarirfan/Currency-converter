@@ -8,12 +8,8 @@ afterEach(() => {
 });
 
 describe("<Home />", () => {
-  const createProps = () => ({
-    navigation: {}
-  })
   it("Does not explode", () => {
-    const props = createProps()
-    const rendered = render(<Home {...props} />).toJSON();
+    const rendered = render(<Home />).toJSON();
     expect(rendered).toMatchSnapshot();
   })
 })

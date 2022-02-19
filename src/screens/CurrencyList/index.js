@@ -1,57 +1,67 @@
-import React, {useContext} from "react"
-import flow from "lodash/flow"
-import get from "lodash/get"
-import filter from "lodash/filter"
-import {View, FlatList, TouchableOpacity} from "react-native"
-import PropTypes from "prop-types"
-import {useNavigation, useRoute} from "@react-navigation/native"
-import Entypo from "react-native-vector-icons/Entypo"
-import CheckBox from "@react-native-community/checkbox"
-import cc from "currency-codes"
+import React from 'react';
+import { View, FlatList, TouchableOpacity } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import cc from 'currency-codes';
+import CheckBox from '@react-native-community/checkbox';
+import Entypo from 'react-native-vector-icons/Entypo';
+import { useDispatch, useSelector } from 'react-redux';
 
-import themeStyles from "./styles"
-import {RowItem, RowSeparator} from "../../components/RowItem"
-import connect from "./connect"
-import {ThemeContext} from "../../ContextUtils/ThemeContext"
-import {HeaderBar} from "../../components/HeaderBar"
-import {ConversionContext} from "../../ContextUtils/ConversionContext"
+import RowItem, { RowSeparator } from '../../components/RowItem';
+import HeaderBar from '../../components/HeaderBar';
 
-// CurrencyList Component content
-export const CurrencyList = () => {
-  const {push} = useNavigation()
-  const {name, params} = useRoute()
+import { selectStyleableTheme } from '../../redux/reducers/themes/selectors';
+import {
+  changeBaseCurrency,
+  changeQuoteCurrency,
+  toggleFavorite,
+} from '../../redux/reducers/conversion/actionCreators';
+import {
+  selectBaseCurrency,
+  selectCurrencies,
+  selectQuoteCurrency,
+} from '../../redux/reducers/conversion/selectors';
 
-  const isBaseCurrency = get(params, "isBaseCurrency", false)
-  const title = get(params, "title", "")
+import themeStyles from './styles';
 
-  const {styleableTheme} = useContext(ThemeContext)
-  const styles = themeStyles(styleableTheme)
+function Separator() {
+  return <RowSeparator />;
+}
 
-  const {
-    baseCurrency,
-    quoteCurrency,
-    changeBaseCurrency,
-    changeQuoteCurrency,
-    rates,
-    toggleFavorite,
-  } = useContext(ConversionContext)
+function Footer() {
+  return <View />;
+}
 
-  const exclude = isBaseCurrency ? quoteCurrency : baseCurrency
+function CurrencyList() {
+  const { push } = useNavigation();
+  const { name, params } = useRoute();
+  const dispatch = useDispatch();
+
+  const styleableTheme = useSelector(selectStyleableTheme);
+  const baseCurrency = useSelector(selectBaseCurrency);
+  const quoteCurrency = useSelector(selectQuoteCurrency);
+  const rates = useSelector(selectCurrencies);
+
+  const styles = themeStyles(styleableTheme);
+
+  const isBaseCurrency = params?.isBaseCurrency;
+  const title = params?.title;
+
+  const exclude = isBaseCurrency ? quoteCurrency : baseCurrency;
 
   return (
     <View style={styles.root}>
       <HeaderBar title={title || name} />
       <FlatList
-        data={filter(rates, (rate) => exclude !== rate.name)}
-        renderItem={({item}) => {
-          let selected = false
+        data={rates || [].filter((rate) => exclude !== rate.name)}
+        renderItem={({ item }) => {
+          let selected = false;
 
           if (isBaseCurrency && item.name === baseCurrency) {
-            selected = true
+            selected = true;
           } else if (!isBaseCurrency && item.name === quoteCurrency) {
-            selected = true
+            selected = true;
           }
-          const {currency} = cc.code(item.name)
+          const { currency } = cc.code(item.name);
           return (
             <RowItem
               title={`${item.name} (${currency})`}
@@ -59,17 +69,19 @@ export const CurrencyList = () => {
               rightIcon={
                 <View
                   style={{
-                    flexDirection: "row",
-                  }}>
+                    flexDirection: 'row',
+                  }}
+                >
                   <TouchableOpacity
                     style={{
                       paddingRight: 12,
                     }}
-                    onPress={() => toggleFavorite(item.name)}>
+                    onPress={() => dispatch(toggleFavorite(item.name))}
+                  >
                     <Entypo
-                      name={item.isFavorite ? "star" : "star-outlined"}
+                      name={item.isFavorite ? 'star' : 'star-outlined'}
                       size={30}
-                      color={item.isFavorite ? "#FFDE00" : styleableTheme[500]}
+                      color={item.isFavorite ? '#FFDE00' : styleableTheme[500]}
                     />
                   </TouchableOpacity>
                   <CheckBox
@@ -80,30 +92,24 @@ export const CurrencyList = () => {
                     onTintColor={styleableTheme[900]}
                     onValueChange={() => {
                       if (isBaseCurrency) {
-                        changeBaseCurrency(item.name)
+                        dispatch(changeBaseCurrency(item.name));
                       } else {
-                        changeQuoteCurrency(item.name)
+                        dispatch(changeQuoteCurrency(item.name));
                       }
-                      push("Home")
+                      push('Home');
                     }}
                   />
                 </View>
               }
             />
-          )
+          );
         }}
         keyExtractor={(item) => item.name}
-        ItemSeparatorComponent={() => <RowSeparator />}
-        ListFooterComponent={() => <View />}
+        ItemSeparatorComponent={Separator}
+        ListFooterComponent={Footer}
       />
     </View>
-  )
+  );
 }
 
-// CurrencyList Proptypes
-CurrencyList.propTypes = {}
-
-// CurrencyList Default props
-CurrencyList.defaultProps = {}
-
-export default flow([connect])(CurrencyList)
+export default CurrencyList;

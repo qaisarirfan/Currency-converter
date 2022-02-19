@@ -74,37 +74,10 @@ exports[`<Login /> Does not explode 1`] = `
     </View>
   </View>
   <RCTScrollView
-    automaticallyAdjustContentInsets={false}
     behavior="padding"
     contentContainerStyle={Object {}}
-    contentInset={
-      Object {
-        "bottom": 0,
-      }
-    }
-    enableAutomaticScroll={true}
-    enableOnAndroid={false}
-    enableResetScrollToCoords={true}
-    extraHeight={75}
-    extraScrollHeight={0}
-    getScrollResponder={[Function]}
-    handleOnScroll={[Function]}
-    keyboardDismissMode="interactive"
-    keyboardOpeningTime={250}
-    keyboardSpace={0}
-    onScroll={[Function]}
-    resetKeyboardSpace={[Function]}
     scrollEnabled={true}
-    scrollEventThrottle={1}
-    scrollForExtraHeightOnAndroid={[Function]}
-    scrollIntoView={[Function]}
-    scrollToEnd={[Function]}
-    scrollToFocusedInput={[Function]}
-    scrollToPosition={[Function]}
-    showsVerticalScrollIndicator={true}
     style={Object {}}
-    update={[Function]}
-    viewIsInsideTabBar={false}
   >
     <View>
       <View
@@ -148,14 +121,12 @@ exports[`<Login /> Does not explode 1`] = `
           }
         >
           <TextInput
-            allowFontScaling={true}
             autoCapitalize="none"
             autoCompleteType="email"
             onBlur={[Function]}
             onChangeText={[Function]}
-            placeholder="login.email"
+            placeholder="Email"
             placeholderTextColor="#00476E"
-            rejectResponderTermination={true}
             style={
               Object {
                 "backgroundColor": "#FFF",
@@ -172,17 +143,14 @@ exports[`<Login /> Does not explode 1`] = `
               }
             }
             testID="email"
-            underlineColorAndroid="transparent"
             value=""
           />
           <TextInput
-            allowFontScaling={true}
             autoCapitalize="none"
             onBlur={[Function]}
             onChangeText={[Function]}
-            placeholder="login.password"
+            placeholder="Password"
             placeholderTextColor="#00476E"
-            rejectResponderTermination={true}
             secureTextEntry={true}
             style={
               Object {
@@ -200,11 +168,11 @@ exports[`<Login /> Does not explode 1`] = `
               }
             }
             testID="password"
-            underlineColorAndroid="transparent"
             value=""
           />
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -235,7 +203,7 @@ exports[`<Login /> Does not explode 1`] = `
                 }
               }
             >
-              login.submit
+              Submit
             </Text>
           </View>
         </View>

@@ -1,17 +1,17 @@
-import get from "lodash/get"
-import {LOADING, LOADED, ERROR} from "./actions"
-import {selectAuthToken} from "../reducers/authentication/selectors"
-import {errorMessage} from "../../configure/clients"
+import get from 'lodash/get';
+import { LOADING, LOADED, ERROR } from './actions';
+import { selectAuthToken } from '../reducers/authentication/selectors';
+import { errorMessage } from '../../configure/clients';
 
 const apiClients = (clients) => (store) => (next) => (action) => {
   const makeAction = (status, data) => {
-    const newAction = {...action, type: action.type + status, ...data}
-    delete newAction.request
-    return newAction
-  }
+    const newAction = { ...action, type: action.type + status, ...data };
+    delete newAction.request;
+    return newAction;
+  };
 
   const addTokenToRequest = (state, request) => {
-    const authToken = selectAuthToken(state)
+    const authToken = selectAuthToken(state);
     return authToken
       ? {
           ...request,
@@ -20,36 +20,34 @@ const apiClients = (clients) => (store) => (next) => (action) => {
             Authorization: `Bearer ${authToken}`,
           },
         }
-      : request
-  }
+      : request;
+  };
 
   if (!action || !action.request) {
-    return next(action)
+    return next(action);
   }
 
-  const clientName = action.client || "default"
+  const clientName = action.client || 'default';
   if (!clients[clientName]) {
-    throw new Error(
-      `Client with name "${clientName}" has not been defined in middleware`
-    )
+    throw new Error(`Client with name "${clientName}" has not been defined in middleware`);
   }
 
-  next(makeAction(LOADING, false))
+  next(makeAction(LOADING, false));
 
-  const request = addTokenToRequest(store.getState(), action.request)
+  const request = addTokenToRequest(store.getState(), action.request);
   return clients[clientName].client.request(request).then(
     (result) => {
-      const errors = get(result, "data.errors", [])
-      const payload = {result: result.data, originalPayload: action.payload}
+      const errors = get(result, 'data.errors', []);
+      const payload = { result: result.data, originalPayload: action.payload };
       if (errors) {
         payload.error = {
           result: errors,
-        }
+        };
       }
-      next(makeAction(LOADED, {payload}))
+      next(makeAction(LOADED, { payload }));
       if (action.callback) {
-        const {dispatch, getState} = store
-        action.callback(dispatch, getState, payload)
+        const { dispatch, getState } = store;
+        action.callback(dispatch, getState, payload);
       }
     },
     (error) => {
@@ -60,9 +58,9 @@ const apiClients = (clients) => (store) => (next) => (action) => {
             originalPayload: action.payload,
           },
         })
-      )
+      );
     }
-  )
-}
+  );
+};
 
-export default apiClients
+export default apiClients;

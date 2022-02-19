@@ -1,19 +1,20 @@
-import React, {useContext} from "react"
-import {View, Text, TouchableOpacity, TextInput} from "react-native"
-import PropTypes from "prop-types"
-import themeStyles from "./styles"
-import {ThemeContext} from "../../ContextUtils/ThemeContext"
+import React from 'react';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { useSelector } from 'react-redux';
 
-// ConversionInput Component content
-export const ConversionInput = ({text, onButtonPress, ...rest}) => {
-  const {styleableTheme} = useContext(ThemeContext)
+import { selectStyleableTheme } from '../../redux/reducers/themes/selectors';
 
-  const styles = themeStyles(styleableTheme)
+import themeStyles from './styles';
 
-  const containerStyles = [styles.container]
+function ConversionInput({ text, onButtonPress, ...rest }) {
+  const styleableTheme = useSelector(selectStyleableTheme);
+
+  const styles = themeStyles(styleableTheme);
+
+  const containerStyles = [styles.container];
 
   if (rest.editable === false) {
-    containerStyles.push(styles.containerDisabled)
+    containerStyles.push(styles.containerDisabled);
   }
   return (
     <View style={containerStyles}>
@@ -22,13 +23,7 @@ export const ConversionInput = ({text, onButtonPress, ...rest}) => {
       </TouchableOpacity>
       <TextInput style={styles.input} {...rest} />
     </View>
-  )
+  );
 }
 
-// ConversionInput Proptypes
-ConversionInput.propTypes = {}
-
-// ConversionInput Default props
-ConversionInput.defaultProps = {}
-
-export default ConversionInput
+export default ConversionInput;

@@ -1,19 +1,18 @@
-import React from "react"
-import {View, Text} from "react-native"
-import PropTypes from "prop-types"
-import styles from "./styles"
+import React from 'react';
+import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import styles from './styles';
 
-// COMPONENT Component content
-export const COMPONENT = () => (
-  <View>
-    <Text>COMPONENT</Text>
-  </View>
-)
+export function COMPONENT() {
+  return (
+    <View>
+      <Text>COMPONENT</Text>
+    </View>
+  );
+}
 
-// COMPONENT Proptypes
-COMPONENT.propTypes = {}
+COMPONENT.propTypes = {};
 
-// COMPONENT Default props
-COMPONENT.defaultProps = {}
+COMPONENT.defaultProps = {};
 
-export default COMPONENT
+export default COMPONENT;

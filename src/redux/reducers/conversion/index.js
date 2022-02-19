@@ -1,27 +1,27 @@
-import get from "lodash/get"
-import findIndex from "lodash/findIndex"
-import {createReducer} from "../../utility"
+import get from 'lodash/get';
+import findIndex from 'lodash/findIndex';
+import { createReducer } from '../../utility';
 import {
   CHANGE_BASE_CURRENCY,
   CHANGE_QUOTE_CURRENCY,
   RATES,
   SWAP_CURRENCY,
   TOGGLE_FAVORITE,
-} from "./actions"
-import {ERROR, LOADED, LOADING} from "../../middleware/actions"
-import {LOGOUT} from "../authentication/actions"
+} from './actions';
+import { ERROR, LOADED, LOADING } from '../../middleware/actions';
+import { LOGOUT } from '../authentication/actions';
 
 // conversion initial state
 export const initialState = {
-  baseCurrency: "USD",
-  quoteCurrency: "GBP",
+  baseCurrency: 'USD',
+  quoteCurrency: 'GBP',
   rates: {
     data: [],
     loader: false,
     loadingError: null,
   },
   favorite: [],
-}
+};
 
 // conversion Reducer
 const reducers = {
@@ -34,11 +34,11 @@ const reducers = {
         loadingError: null,
         loader: true,
       },
-    }
+    };
   },
 
   [RATES + LOADED](state, payload) {
-    const result = get(payload, "result.rates", {})
+    const result = get(payload, 'result.rates', {});
     return {
       ...state,
       rates: {
@@ -51,11 +51,11 @@ const reducers = {
         })),
         loader: false,
       },
-    }
+    };
   },
 
   [RATES + ERROR](state, payload) {
-    const result = get(payload, "result", undefined)
+    const result = get(payload, 'result', undefined);
     return {
       ...state,
       rates: {
@@ -64,7 +64,7 @@ const reducers = {
         loader: false,
         loadingError: result,
       },
-    }
+    };
   },
 
   [SWAP_CURRENCY](state) {
@@ -72,43 +72,43 @@ const reducers = {
       ...state,
       baseCurrency: state.quoteCurrency,
       quoteCurrency: state.baseCurrency,
-    }
+    };
   },
 
   [CHANGE_BASE_CURRENCY](state, payload) {
     return {
       ...state,
       baseCurrency: payload,
-    }
+    };
   },
 
   [CHANGE_QUOTE_CURRENCY](state, payload) {
     return {
       ...state,
       quoteCurrency: payload,
-    }
+    };
   },
 
   [TOGGLE_FAVORITE](state, payload) {
-    const favorite = [...state.favorite]
+    const favorite = [...state.favorite];
 
-    const index = findIndex(state.favorite, (fav) => fav === payload)
+    const index = findIndex(state.favorite, (fav) => fav === payload);
 
     if (index === -1) {
-      favorite.push(payload)
+      favorite.push(payload);
     } else {
-      favorite.splice(index, 1)
+      favorite.splice(index, 1);
     }
 
     return {
       ...state,
       favorite,
-    }
+    };
   },
 
   [LOGOUT]() {
-    return initialState
+    return initialState;
   },
-}
+};
 
-export default createReducer(reducers, initialState)
+export default createReducer(reducers, initialState);

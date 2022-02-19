@@ -1,15 +1,15 @@
-import {createReducer} from "../../utility"
-import {SELECT_THEME} from "./actions"
-import constants from "../../../constants"
+import { createReducer } from '../../utility';
+import { SELECT_THEME } from './actions';
+import constants from '../../../constants';
 
-const {themeOptions} = constants
+const { themeOptions } = constants;
 
 export const initialState = {
   themes: {
     ...themeOptions,
   },
-  default: "#4f6d7a",
-}
+  default: '#4f6d7a',
+};
 
 // Reducer
 const reducers = {
@@ -17,8 +17,8 @@ const reducers = {
     return {
       ...state,
       default: payload,
-    }
+    };
   },
-}
+};
 
-export default createReducer(reducers, initialState)
+export default createReducer(reducers, initialState);

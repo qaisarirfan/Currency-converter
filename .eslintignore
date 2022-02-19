@@ -1,6 +1,10 @@
 # Third party
 **/node_modules
 **/jest/
+**/storybook/
+story.js
+**/scripts/
+**/e2e/
 
 # No way to properly configure eslint for testing files so for now they are ignored
 **/__tests__/

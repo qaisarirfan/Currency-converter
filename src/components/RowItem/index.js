@@ -1,53 +1,50 @@
-import React, {useContext} from "react"
-import {Text, TouchableOpacity, View} from "react-native"
-import PropTypes from "prop-types"
-import themeStyles from "./styles"
-import {ThemeContext} from "../../ContextUtils/ThemeContext"
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-// RowItem Component content
-export const RowItem = ({title, isButton, onPress, rightIcon, ...rest}) => {
-  const {styleableTheme} = useContext(ThemeContext)
-  const styles = themeStyles(styleableTheme)
+import { selectStyleableTheme } from '../../redux/reducers/themes/selectors';
+
+import themeStyles from './styles';
+
+const RowItem = ({ title, isButton, onPress, rightIcon, ...rest }) => {
+  const styleableTheme = useSelector(selectStyleableTheme);
+
+  const styles = themeStyles(styleableTheme);
   let component = (
     <View style={styles.row}>
       <Text style={styles.title}>{title}</Text>
       {rightIcon}
     </View>
-  )
+  );
   if (isButton) {
     component = (
       <TouchableOpacity onPress={onPress} style={styles.row} {...rest}>
         <Text style={styles.title}>{title}</Text>
         {rightIcon}
       </TouchableOpacity>
-    )
+    );
   }
-  return component
-}
+  return component;
+};
 
-// RowItem Proptypes
 RowItem.propTypes = {
-  title: PropTypes.string.isRequired,
+  isButton: PropTypes.bool,
   onPress: PropTypes.func,
   rightIcon: PropTypes.node,
-  isButton: PropTypes.bool,
-}
+  title: PropTypes.string.isRequired,
+};
 
-// RowItem Default props
 RowItem.defaultProps = {
+  isButton: true,
   onPress: () => {},
   rightIcon: null,
-  isButton: true,
+};
+
+export default RowItem;
+
+export function RowSeparator() {
+  const styleableTheme = useSelector(selectStyleableTheme);
+  const styles = themeStyles(styleableTheme);
+  return <View style={styles.separator} />;
 }
-
-export const RowSeparator = () => {
-  const {styleableTheme} = useContext(ThemeContext)
-  const styles = themeStyles(styleableTheme)
-  return <View style={styles.separator} />
-}
-
-// RowSeparator Proptypes
-RowSeparator.propTypes = {}
-
-// RowSeparator Default props
-RowSeparator.defaultProps = {}

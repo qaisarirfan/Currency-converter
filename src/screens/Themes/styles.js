@@ -1,13 +1,12 @@
-import {StyleSheet} from "react-native"
+import { StyleSheet } from 'react-native';
 
 // Themes: Styling here
-const styles = (styleableTheme) => {
-  return StyleSheet.create({
+const styles = (styleableTheme) =>
+  StyleSheet.create({
     root: {
-      flex: 1,
       backgroundColor: styleableTheme[500],
+      flex: 1,
     },
-  })
-}
+  });
 
-export default styles
+export default styles;

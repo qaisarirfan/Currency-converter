@@ -1,13 +1,13 @@
-import React from "react"
-import Languages from "."
+import React from 'react';
+import Languages from '.';
 
 export default {
-  title: "Languages",
+  title: 'Languages',
   storyFn() {
     return (
       <div>
         <Languages />
       </div>
-    )
+    );
   },
-}
+};

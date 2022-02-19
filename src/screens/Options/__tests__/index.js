@@ -8,13 +8,8 @@ afterEach(() => {
 });
 
 describe("<Options />", () => {
-  const createProps = () => ({
-    navigation: {}
-  })
-
   it("Does not explode", () => {
-    const props = createProps()
-    const component = render(<Options {...props} />).toJSON()
+    const component = render(<Options />).toJSON()
     expect(component).toMatchSnapshot()
   })
 })

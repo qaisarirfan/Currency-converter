@@ -1,13 +1,13 @@
-import React from "react"
-import COMPONENT from "."
+import React from 'react';
+import COMPONENT from '.';
 
 export default {
-  title: "COMPONENT",
+  title: 'COMPONENT',
   storyFn() {
     return (
       <div>
         <COMPONENT />
       </div>
-    )
+    );
   },
-}
+};

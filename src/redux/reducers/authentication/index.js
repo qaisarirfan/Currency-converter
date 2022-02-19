@@ -1,6 +1,6 @@
-import {createReducer} from "../../utility"
-import {ERROR, LOADED, LOADING} from "../../middleware/actions"
-import {LOGIN, LOGOUT} from "./actions"
+import { createReducer } from '../../utility';
+import { ERROR, LOADED, LOADING } from '../../middleware/actions';
+import { LOGIN, LOGOUT } from './actions';
 
 const initialState = {
   login: {
@@ -9,9 +9,8 @@ const initialState = {
     error: null,
     loader: false,
   },
-}
+};
 
-// Reducer
 const reducers = {
   [LOGIN](state) {
     return {
@@ -20,7 +19,7 @@ const reducers = {
         ...state.login,
         isLoggedin: true,
       },
-    }
+    };
   },
 
   [LOGIN + LOADING](state) {
@@ -32,7 +31,7 @@ const reducers = {
         error: null,
         loader: true,
       },
-    }
+    };
   },
 
   [LOGIN + LOADED](state, payload) {
@@ -43,7 +42,7 @@ const reducers = {
         data: payload,
         loader: false,
       },
-    }
+    };
   },
 
   [LOGIN + ERROR](state, payload) {
@@ -55,16 +54,16 @@ const reducers = {
         loader: false,
         error: payload,
       },
-    }
+    };
   },
 
   [LOGOUT]() {
-    return initialState
+    return initialState;
   },
 
   [LOGOUT + LOADED]() {
-    return initialState
+    return initialState;
   },
-}
+};
 
-export default createReducer(reducers, initialState)
+export default createReducer(reducers, initialState);

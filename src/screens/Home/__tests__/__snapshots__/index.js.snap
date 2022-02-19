@@ -73,6 +73,7 @@ exports[`<Home /> Does not explode 1`] = `
       >
         <View
           accessible={true}
+          collapsable={false}
           focusable={true}
           onClick={[Function]}
           onResponderGrant={[Function]}
@@ -90,6 +91,7 @@ exports[`<Home /> Does not explode 1`] = `
         >
           <Text
             allowFontScaling={false}
+            selectable={false}
             style={
               Array [
                 Object {
@@ -113,36 +115,9 @@ exports[`<Home /> Does not explode 1`] = `
     </View>
   </View>
   <RCTScrollView
-    automaticallyAdjustContentInsets={false}
     behavior="padding"
-    contentInset={
-      Object {
-        "bottom": 0,
-      }
-    }
-    enableAutomaticScroll={true}
-    enableOnAndroid={false}
-    enableResetScrollToCoords={true}
-    extraHeight={75}
-    extraScrollHeight={0}
-    getScrollResponder={[Function]}
-    handleOnScroll={[Function]}
-    keyboardDismissMode="interactive"
-    keyboardOpeningTime={250}
-    keyboardSpace={0}
-    onScroll={[Function]}
-    resetKeyboardSpace={[Function]}
     scrollEnabled={true}
-    scrollEventThrottle={1}
-    scrollForExtraHeightOnAndroid={[Function]}
-    scrollIntoView={[Function]}
-    scrollToEnd={[Function]}
-    scrollToFocusedInput={[Function]}
-    scrollToPosition={[Function]}
-    showsVerticalScrollIndicator={true}
     testID="home_screen"
-    update={[Function]}
-    viewIsInsideTabBar={false}
   >
     <View>
       <View
@@ -189,7 +164,7 @@ exports[`<Home /> Does not explode 1`] = `
             }
           }
         >
-          home.currency_converter
+          Currency converter
         </Text>
         <View>
           <View
@@ -209,6 +184,7 @@ exports[`<Home /> Does not explode 1`] = `
           >
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -240,10 +216,8 @@ exports[`<Home /> Does not explode 1`] = `
               />
             </View>
             <TextInput
-              allowFontScaling={true}
               keyboardType="numeric"
               onChangeText={[Function]}
-              rejectResponderTermination={true}
               style={
                 Object {
                   "color": "#00476E",
@@ -253,7 +227,6 @@ exports[`<Home /> Does not explode 1`] = `
                 }
               }
               testID="conversion_input_1"
-              underlineColorAndroid="transparent"
               value="100"
             />
           </View>
@@ -277,6 +250,7 @@ exports[`<Home /> Does not explode 1`] = `
           >
             <View
               accessible={true}
+              collapsable={false}
               focusable={true}
               onClick={[Function]}
               onResponderGrant={[Function]}
@@ -308,9 +282,7 @@ exports[`<Home /> Does not explode 1`] = `
               />
             </View>
             <TextInput
-              allowFontScaling={true}
               editable={false}
-              rejectResponderTermination={true}
               style={
                 Object {
                   "color": "#00476E",
@@ -320,12 +292,12 @@ exports[`<Home /> Does not explode 1`] = `
                 }
               }
               testID="conversion_input_2"
-              underlineColorAndroid="transparent"
               value="0.00"
             />
           </View>
           <View
             accessible={true}
+            collapsable={false}
             focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
@@ -368,10 +340,18 @@ exports[`<Home /> Does not explode 1`] = `
                 }
               }
             >
-              home.reverse_currencies
+              Reverse currencies
             </Text>
           </View>
         </View>
+        <View
+          style={
+            Object {
+              "backgroundColor": "white",
+              "padding": 12,
+            }
+          }
+        />
         <View
           style={
             Array [

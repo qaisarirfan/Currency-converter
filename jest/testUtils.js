@@ -1,31 +1,30 @@
-import React from "react"
-import {render} from "react-native-testing-library"
-import {Provider} from "react-redux"
-import configureStore from "redux-mock-store"
-import ThemeContextProvider from "../src/ContextUtils/ThemeContext"
-import ConversionContextProvider from "../src/ContextUtils/ConversionContext"
-import {initialState as themesState} from "../src/redux/reducers/themes"
+import React from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { render } from 'react-native-testing-library';
+import configureStore from 'redux-mock-store';
+
+import { initialState as themesState } from '../src/redux/reducers/themes';
+import configureI18next from '../src/services/i18n';
 
 const INITIAL_STATE = {
   themes: themesState,
-}
-const mockStore = configureStore([])
-const store = mockStore(INITIAL_STATE)
+};
+const mockStore = configureStore([]);
+const store = mockStore(INITIAL_STATE);
 
 const reduxRender = (ui, options) =>
   render(ui, {
-    wrapper: ({children}) => (
+    wrapper: ({ children }) => (
       <Provider store={store}>
-        <ThemeContextProvider>
-          <ConversionContextProvider>{children}</ConversionContextProvider>
-        </ThemeContextProvider>
+        <I18nextProvider i18n={configureI18next()}>{children}</I18nextProvider>
       </Provider>
     ),
     ...options,
-  })
+  });
 
 // re-export everything for convenience
-export * from "react-native-testing-library"
+export * from 'react-native-testing-library';
 
 // override render method
-export {reduxRender as render, store}
+export { reduxRender as render, store };

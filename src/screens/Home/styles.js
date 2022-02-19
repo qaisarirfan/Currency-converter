@@ -1,16 +1,16 @@
-import {Dimensions, StyleSheet} from "react-native"
+import { Dimensions, StyleSheet } from 'react-native';
 
-const screen = Dimensions.get("window")
+const screen = Dimensions.get('window');
 
 // Home: Styling here
 const styles = (theme) =>
   StyleSheet.create({
     root: {
-      flex: 1,
       backgroundColor: theme[500],
+      flex: 1,
     },
     header: {
-      alignItems: "flex-end",
+      alignItems: 'flex-end',
       marginHorizontal: 20,
     },
     content: {
@@ -18,24 +18,24 @@ const styles = (theme) =>
     },
     textHeader: {
       color: theme[50],
-      fontWeight: "bold",
       fontSize: 30,
-      textAlign: "center",
+      fontWeight: 'bold',
       marginBottom: 20,
+      textAlign: 'center',
     },
     listWrapper: {
+      backgroundColor: 'white',
       padding: 12,
-      backgroundColor: "white",
     },
     list: {
-      display: "flex",
-      flexDirection: "row",
+      borderBottomColor: theme[500],
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
       paddingBottom: 6,
       paddingTop: 6,
-      justifyContent: "space-between",
-      borderBottomWidth: StyleSheet.hairlineWidth,
-      borderBottomColor: theme[500],
     },
-  })
+  });
 
-export default styles
+export default styles;

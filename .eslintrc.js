@@ -1,28 +1,36 @@
 module.exports = {
-  extends: ["airbnb", "prettier", "prettier/react"],
-  rules: {
-    "no-named-as-default-member": "off",
-    "import/no-named-as-default": "off",
-    "react/forbid-prop-types": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        extensions: [".js", ".jsx"],
-      },
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        trailingComma: "es5",
-        singleQuote: false,
-        printWidth: 80,
-        semi: false,
-        tabWidth: 2,
-        useTabs: false,
-        bracketSpacing: false,
-        jsxBracketSameLine: true,
-      },
-    ],
+  env: {
+    browser: true,
+    es2021: true,
   },
-  plugins: ["prettier"],
-}
+  extends: ['airbnb', 'prettier'],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    __DEV__: 'readonly',
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: ['react', 'prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': [
+      'warn',
+      {
+        extensions: ['.jsx', '.js', '.json'],
+      },
+    ],
+    'import/prefer-default-export': 'off',
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/prop-types': 'off',
+    'no-param-reassign': 'off',
+    'no-console': 'off',
+  },
+};

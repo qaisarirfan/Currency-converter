@@ -1,11 +1,11 @@
-import Color from "color"
-import {Dimensions, StyleSheet} from "react-native"
+import Color from 'color';
+import { Dimensions, StyleSheet } from 'react-native';
 
-const screen = Dimensions.get("window")
+const screen = Dimensions.get('window');
 
 // Login: Styling here
-const styles = (theme) => {
-  return StyleSheet.create({
+const styles = (theme) =>
+  StyleSheet.create({
     root: {
       flex: 1,
       backgroundColor: theme[500],
@@ -23,9 +23,9 @@ const styles = (theme) => {
       paddingRight: 10,
       fontSize: 18,
       color: Color(theme.A700).darken(0.6).hex(),
-      backgroundColor: "#FFF",
+      backgroundColor: '#FFF',
       marginVertical: 10,
-      flexDirection: "row",
+      flexDirection: 'row',
       borderRadius: 5,
       borderWidth: StyleSheet.hairlineWidth,
       borderColor: theme[200],
@@ -34,15 +34,15 @@ const styles = (theme) => {
       backgroundColor: theme[900],
       padding: 10,
       margin: 15,
-      alignItems: "center",
+      alignItems: 'center',
       height: 40,
       borderRadius: 20,
-      overflow: "hidden",
+      overflow: 'hidden',
     },
     submitButtonText: {
       color: theme[50],
       fontSize: 18,
     },
-  })
-}
-export default styles
+  });
+
+export default styles;

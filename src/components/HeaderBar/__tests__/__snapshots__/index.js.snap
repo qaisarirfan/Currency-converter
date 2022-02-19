@@ -50,58 +50,59 @@ exports[`<HeaderBar /> Does not explode 1`] = `
         }
       }
     >
-      <RNGestureHandlerButton
+      <View
+        accessible={true}
         collapsable={false}
-        onGestureEvent={[Function]}
-        onGestureHandlerEvent={[Function]}
-        onGestureHandlerStateChange={[Function]}
-        onHandlerStateChange={[Function]}
-        rippleColor={0}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "display": "flex",
+            "flexDirection": "row",
+            "opacity": 1,
+          }
+        }
         testID="back"
       >
-        <View
-          accessible={true}
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            Array [
+              Object {
+                "color": "#eaedef",
+                "fontSize": 16,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Entypo",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
           style={
             Object {
-              "display": "flex",
-              "flexDirection": "row",
-              "opacity": 1,
+              "color": "#eaedef",
+              "fontSize": 18,
+              "lineHeight": 18,
             }
           }
         >
-          <Text
-            allowFontScaling={false}
-            style={
-              Array [
-                Object {
-                  "color": "#eaedef",
-                  "fontSize": 16,
-                },
-                undefined,
-                Object {
-                  "fontFamily": "Entypo",
-                  "fontStyle": "normal",
-                  "fontWeight": "normal",
-                },
-                Object {},
-              ]
-            }
-          >
-            
-          </Text>
-          <Text
-            style={
-              Object {
-                "color": "#eaedef",
-                "fontSize": 18,
-                "lineHeight": 18,
-              }
-            }
-          >
-            common.back
-          </Text>
-        </View>
-      </RNGestureHandlerButton>
+          Back
+        </Text>
+      </View>
     </View>
     <View
       style={

@@ -18,6 +18,7 @@ exports[`<ConversionInput /> Does not explode 1`] = `
 >
   <View
     accessible={true}
+    collapsable={false}
     focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
@@ -49,8 +50,6 @@ exports[`<ConversionInput /> Does not explode 1`] = `
     />
   </View>
   <TextInput
-    allowFontScaling={true}
-    rejectResponderTermination={true}
     style={
       Object {
         "color": "#00476E",
@@ -59,7 +58,6 @@ exports[`<ConversionInput /> Does not explode 1`] = `
         "padding": 10,
       }
     }
-    underlineColorAndroid="transparent"
   />
 </View>
 `;

@@ -7,5 +7,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnSaveMode": "modifications"
+  "editor.formatOnSaveMode": "modifications",
+  "cSpell.words": [
+    "bootsplash",
+    "Entypo",
+    "Loggedin",
+    "persistor",
+    "Styleable"
+  ]
 }

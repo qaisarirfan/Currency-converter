@@ -3,26 +3,26 @@
 
 export class ReducerRegistery {
   constructor() {
-    this.emitChange = null
-    this.reducers = {}
+    this.emitChange = null;
+    this.reducers = {};
   }
 
   getReducers() {
-    return {...this.reducers}
+    return { ...this.reducers };
   }
 
   register(name, reducer) {
-    if (this.reducers[name]) return // Skip if the reducer already exists
+    if (this.reducers[name]) return; // Skip if the reducer already exists
 
-    this.reducers = {...this.reducers, [name]: reducer}
+    this.reducers = { ...this.reducers, [name]: reducer };
 
-    if (this.emitChange) this.emitChange(this.getReducers())
+    if (this.emitChange) this.emitChange(this.getReducers());
   }
 
   setChangeListener(listener) {
-    this.emitChange = listener
+    this.emitChange = listener;
   }
 }
 
-const reducerRegistery = new ReducerRegistery()
-export default reducerRegistery
+const reducerRegistery = new ReducerRegistery();
+export default reducerRegistery;

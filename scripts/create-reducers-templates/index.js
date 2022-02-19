@@ -1,13 +1,13 @@
-import {createReducer} from "../../utility"
-import {SELECT} from "./actions"
-import {ERROR, LOADED, LOADING} from "../../middleware/actions"
+import { createReducer } from '../../utility';
+import { SELECT } from './actions';
+import { ERROR, LOADED, LOADING } from '../../middleware/actions';
 
 // REDUCERS initial state
 export const initialState = {
   data: null,
   loader: false,
   loadingError: null,
-}
+};
 
 // REDUCERS Reducer
 const reducers = {
@@ -17,7 +17,7 @@ const reducers = {
       data: null,
       loadingError: null,
       loader: true,
-    }
+    };
   },
 
   [SELECT + LOADED](state, payload) {
@@ -25,7 +25,7 @@ const reducers = {
       ...state,
       data: payload,
       loader: false,
-    }
+    };
   },
 
   [SELECT + ERROR](state, payload) {
@@ -34,8 +34,8 @@ const reducers = {
       data: null,
       loader: false,
       loadingError: payload,
-    }
+    };
   },
-}
+};
 
-export default createReducer(reducers, initialState)
+export default createReducer(reducers, initialState);

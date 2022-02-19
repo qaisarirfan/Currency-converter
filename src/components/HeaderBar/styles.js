@@ -1,34 +1,33 @@
-import {Dimensions, StyleSheet} from "react-native"
+import { Dimensions, StyleSheet } from 'react-native';
 
-// HeaderBar: Styling here
 const styles = (theme) => {
-  const screen = Dimensions.get("screen")
-  const width = screen.width / 3
+  const screen = Dimensions.get('screen');
+  const width = screen.width / 3;
   return StyleSheet.create({
     root: {},
     header: {
-      display: "flex",
+      display: 'flex',
+      flexDirection: 'row',
       flexGrow: 1,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      paddingTop: 12,
+      justifyContent: 'space-between',
       paddingBottom: 12,
+      paddingTop: 12,
     },
     back: {
-      width,
-      justifyContent: "center",
-      alignItems: "flex-start",
+      alignItems: 'flex-start',
+      justifyContent: 'center',
       paddingLeft: 6,
+      width,
     },
     backButton: {
-      display: "flex",
-      flexDirection: "row",
+      display: 'flex',
+      flexDirection: 'row',
     },
     title: {
-      width,
-      alignItems: "center",
-      justifyContent: "center",
+      alignItems: 'center',
       backgroundColor: theme[800],
+      justifyContent: 'center',
+      width,
     },
     text: {
       color: theme[50],
@@ -36,12 +35,12 @@ const styles = (theme) => {
       lineHeight: 18,
     },
     right: {
-      width,
-      alignItems: "flex-end",
-      justifyContent: "center",
+      alignItems: 'flex-end',
+      justifyContent: 'center',
       paddingRight: 6,
+      width,
     },
-  })
-}
+  });
+};
 
-export default styles
+export default styles;

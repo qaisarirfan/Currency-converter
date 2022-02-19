@@ -1,9 +1,9 @@
-import en from "../lang/en.json"
-import ur from "../lang/ur.json"
+import en from '../lang/en.json';
+import ur from '../lang/ur.json';
 
-export const fallback = "en"
+export const fallback = 'en';
 
 export const supportedLocales = {
-  en: {translation: en},
-  ur: {translation: ur},
-}
+  en: { translation: en },
+  ur: { translation: ur },
+};

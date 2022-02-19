@@ -1,10 +1,10 @@
-import {createReducer} from "../../utility"
-import {SET_LANGUAGE} from "./actions"
+import { createReducer } from '../../utility';
+import { SET_LANGUAGE } from './actions';
 
 // languages initial state
 export const initialState = {
-  language: "en",
-}
+  language: 'en',
+};
 
 // languages Reducer
 const reducers = {
@@ -12,8 +12,8 @@ const reducers = {
     return {
       ...state,
       language: payload,
-    }
+    };
   },
-}
+};
 
-export default createReducer(reducers, initialState)
+export default createReducer(reducers, initialState);

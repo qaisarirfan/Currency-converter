@@ -1,6 +1,6 @@
 import React from "react"
 import {render, cleanup, store} from '../../../../jest/testUtils';
-import {RowItem, RowSeparator} from ".."
+import RowItem, {RowSeparator} from ".."
 
 afterEach(() => {
   cleanup();

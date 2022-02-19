@@ -3,6 +3,7 @@
 exports[`<RowItem /> Does not explode 1`] = `
 <View
   accessible={true}
+  collapsable={false}
   focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
