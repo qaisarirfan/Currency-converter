@@ -6,7 +6,6 @@ import {
   TOGGLE_FAVORITE,
 } from './actions';
 
-// conversion actions
 export const createLoadAction = (base = 'USD') => ({
   type: RATES,
   request: {

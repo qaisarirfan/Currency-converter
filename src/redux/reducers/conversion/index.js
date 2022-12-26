@@ -11,7 +11,6 @@ import {
 import { ERROR, LOADED, LOADING } from '../../middleware/actions';
 import { LOGOUT } from '../authentication/actions';
 
-// conversion initial state
 export const initialState = {
   baseCurrency: 'USD',
   quoteCurrency: 'GBP',
@@ -23,7 +22,6 @@ export const initialState = {
   favorite: [],
 };
 
-// conversion Reducer
 const reducers = {
   [RATES + LOADING](state) {
     return {
@@ -38,7 +36,7 @@ const reducers = {
   },
 
   [RATES + LOADED](state, payload) {
-    const result = get(payload, 'result.rates', {});
+    const result = get(payload, 'result.data', {});
     return {
       ...state,
       rates: {

@@ -52,7 +52,7 @@ function CurrencyList() {
     <View style={styles.root}>
       <HeaderBar title={title || name} />
       <FlatList
-        data={rates || [].filter((rate) => exclude !== rate.name)}
+        data={rates || [].sort().filter((rate) => exclude !== rate.name)}
         renderItem={({ item }) => {
           let selected = false;
 
@@ -61,7 +61,7 @@ function CurrencyList() {
           } else if (!isBaseCurrency && item.name === quoteCurrency) {
             selected = true;
           }
-          const { currency } = cc.code(item.name);
+          const currency = cc.code(item.name)?.currency || '';
           return (
             <RowItem
               title={`${item.name} (${currency})`}
