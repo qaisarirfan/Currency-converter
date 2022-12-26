@@ -3,12 +3,13 @@ package com.cc;
 import android.app.Application;
 import android.content.Context;
 
+import com.cc.newarchitecture.MainApplicationReactNativeHost;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.modules.i18nmanager.I18nUtil;
+import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
 
 import java.lang.reflect.InvocationTargetException;
@@ -37,6 +38,26 @@ public class MainApplication extends Application implements ReactApplication {
                     return "index";
                 }
             };
+
+    private final ReactNativeHost mNewArchitectureNativeHost =
+            new MainApplicationReactNativeHost(this);
+
+    @Override
+    public ReactNativeHost getReactNativeHost() {
+        if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+            return mNewArchitectureNativeHost;
+        } else {
+            return mReactNativeHost;
+        }
+    }
+
+    @Override
+    public void onCreate() {
+        // If you opted-in for the New Architecture, we enable the TurboModule system
+        ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
+        SoLoader.init(this, /* native exopackage */ false);
+        initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    }
 
     /**
      * Loads Flipper in React Native templates. Call this in the onCreate method with something like
@@ -67,20 +88,5 @@ public class MainApplication extends Application implements ReactApplication {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public ReactNativeHost getReactNativeHost() {
-        return mReactNativeHost;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
-        sharedI18nUtilInstance.allowRTL(this, true);
-        sharedI18nUtilInstance.forceRTL(this, true);
-        SoLoader.init(this, /* native exopackage */ false);
-        initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     }
 }

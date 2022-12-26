@@ -8,6 +8,7 @@ import languageDetector from './language-detector';
 const configureI18next = () => {
   const { languageCode } = getLocales()[0];
   i18next.use(languageDetector).use(initReactI18next).init({
+    compatibilityJSON: 'v3',
     lng: languageCode,
     resources: config.supportedLocales,
     fallbackLng: config.fallback,

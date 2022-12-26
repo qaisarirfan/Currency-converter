@@ -55,7 +55,7 @@ function App() {
   const { allowedLanguages } = constants;
   const { code, rtl } = allowedLanguages[currentLang];
 
-  const onStateChangeHandler = (data) => {
+  const onStateChangeHandler = data => {
     dispatch(createNavigationAction(data));
   };
 

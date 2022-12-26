@@ -28,7 +28,7 @@ function Login() {
   const [, setScrollEnabled] = useState(false);
 
   // eslint-disable-next-line no-promise-executor-return
-  const sleep = (duration) => new Promise((resolve) => setTimeout(() => resolve(), duration));
+  const sleep = duration => new Promise(resolve => setTimeout(() => resolve(), duration));
 
   return (
     <View style={styles.root} testID="login_screen">
@@ -37,17 +37,19 @@ function Login() {
         scrollEnabled
         behavior="padding"
         style={styles.container}
-        contentContainerStyle={styles.container}
-      >
+        contentContainerStyle={styles.container}>
         <View style={styles.content}>
           <Logo />
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{
+              email: __DEV__ ? 'admin@admin.com' : '',
+              password: __DEV__ ? 'admin' : '',
+            }}
             validationSchema={Yup.object().shape({
               email: Yup.string().email(t('login.invalid_email')).required(t('common.required')),
               password: Yup.string().required(t('common.required')),
             })}
-            onSubmit={(values) => {
+            onSubmit={values => {
               const loginFakeData = {
                 email: 'admin@admin.com',
                 password: 'admin',
@@ -67,8 +69,7 @@ function Login() {
                   },
                 ]);
               }
-            }}
-          >
+            }}>
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
               <View style={styles.inputContainer}>
                 <TextInput
@@ -98,15 +99,14 @@ function Login() {
                 <TouchableOpacity
                   onPress={handleSubmit}
                   style={styles.submitButton}
-                  testID="submit"
-                >
+                  testID="submit">
                   <Text style={styles.submitButtonText}>{t('login.submit')}</Text>
                 </TouchableOpacity>
                 {loader ? <ActivityIndicator color="#fff" /> : null}
               </View>
             )}
           </Formik>
-          <KeyboardSpacer onToggle={(visible) => setScrollEnabled(visible)} />
+          <KeyboardSpacer onToggle={visible => setScrollEnabled(visible)} />
         </View>
       </KeyboardAwareScrollView>
     </View>

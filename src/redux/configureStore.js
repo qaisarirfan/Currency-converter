@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import persistCombineReducers from 'redux-persist/lib/persistCombineReducers';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import thunk from 'redux-thunk';
 import createFilter from 'redux-persist-transform-filter';
 import { logger } from 'redux-logger';

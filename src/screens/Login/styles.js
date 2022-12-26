@@ -4,7 +4,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 const screen = Dimensions.get('window');
 
 // Login: Styling here
-const styles = (theme) =>
+const styles = theme =>
   StyleSheet.create({
     root: {
       flex: 1,
@@ -35,7 +35,7 @@ const styles = (theme) =>
       padding: 10,
       margin: 15,
       alignItems: 'center',
-      height: 40,
+      maxHeight: 60,
       borderRadius: 20,
       overflow: 'hidden',
     },
